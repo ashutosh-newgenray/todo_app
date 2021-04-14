@@ -22,7 +22,7 @@ jobs:
       install:
         # Flutter
         - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
-        - git clone https://github.com/flutter/flutter.git -b statble
+        - git clone https://github.com/flutter/flutter.git -b stable
         - export PATH=$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor
         # Fastlane
