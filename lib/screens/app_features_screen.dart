@@ -52,7 +52,7 @@ class AppFeaturesScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left: 10),
                       child: Text(
                         item['title'],
-                        style: theme.textTheme.headline5!
+                        style: theme.textTheme.headline6!
                             .copyWith(color: Colors.white),
                       ),
                     ),

@@ -13,8 +13,30 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-lane :beta do
-  gradle(task: 'assemble', build_type: 'Release')
-  upload_to_play_store(track: 'beta')
-  # slack(message: 'Successfully distributed a new beta build')
+default_platform(:android)
+
+platform :android do
+  # desc "Runs all the tests"
+  # lane :test do
+  #   gradle(task: "test")
+  # end
+
+  # desc "Submit a new Beta Build to Crashlytics Beta"
+  # lane :beta do
+  #   gradle(task: "clean assembleRelease")
+  #   crashlytics
+  
+  #   # sh "your_script.sh"
+  #   # You can also use other beta testing services here
+  # end
+
+  desc "Deploy a new version to the Google Play"  
+  lane :deploy do    
+    #gradle(task: "clean  bundle", build_type: "Release")
+    supply(track: "internal", 
+      aab: "/Users/ashverma3/Documents/flutter/todo_app/build/app/outputs/bundle/release/app-release.aab", 
+      skip_upload_changelogs: true, 
+      release_status: 'draft', 
+    )
+  end
 end
