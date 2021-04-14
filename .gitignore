@@ -57,3 +57,6 @@ app.*.map.json
 # scan temporary files
 **/fastlane/test_output
 android/fastlane/report.xml
+
+key.jks
+android/local.properties
