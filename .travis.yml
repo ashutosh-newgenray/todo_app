@@ -27,7 +27,10 @@ jobs:
         - gem install bundler
         - cd android && bundle install && cd ..
       script:
-        - "./deploy/android-prod.sh"
+        - flutter build appbundle --flavor staging --build-number $TRAVIS_BUILD_NUMBER
+        - cd android
+        - bundle exec fastlane deploy
+
 before_install:
   - chmod +x ./deploy/android-prod.sh
   - openssl aes-256-cbc -K $encrypted_4f837f3546c7_key -iv $encrypted_4f837f3546c7_iv
