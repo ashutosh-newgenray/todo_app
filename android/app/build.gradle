@@ -51,7 +51,9 @@ android {
     }
     signingConfigs {
        release {
+           println System.getenv("CI")
            if(System.getenv("CI") == true){
+                println System.getenv['storeFile'];
                 keyAlias System.getenv['keyAlias']
                 keyPassword System.getenv['keyPassword']
                 storeFile System.getenv['storeFile'] ? file(System.getenv['storeFile']) : null
