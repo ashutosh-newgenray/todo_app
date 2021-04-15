@@ -50,13 +50,11 @@ android {
         multiDexEnabled true
     }
     signingConfigs {
-       release {           
-            def keyFile = "../../" + System.getenv('storeFile')
-            println "$keyFile"
+       release {
            if(System.getenv("CI") == true){
                 keyAlias System.getenv('keyAlias')
                 keyPassword System.getenv('keyPassword')
-                storeFile System.getenv('storeFile') ? file(keyFile) : null
+                storeFile System.getenv('storeFile') ? file("key.jks") : null
                 storePassword System.getenv('storePassword')
            }else{
                 keyAlias keystoreProperties['keyAlias']
