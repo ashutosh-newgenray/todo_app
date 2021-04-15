@@ -18,25 +18,23 @@ default_platform(:android)
 platform :android do
 
   desc "Deploy a new version to the Google Play"  
-  lane :deploy do    
+  lane :deploy do
     upload_to_play_store(track: "internal", 
       aab: "../build/app/outputs/bundle/release/app-release.aab", 
       skip_upload_changelogs: true, 
       release_status: 'draft', 
     )
   end
-  lane :screenshots do
-    gradle(
-      task: 'assemble assembleAndroidTest'
+  desc "Build debug and test APK for screenshots"
+  lane :build_for_screengrab do
+    build_android_app(
+      task: 'assemble',
+      build_type: 'Debug'
     )
-    apk_path = Dir.glob("../**/*-debug.apk").first
-    test_apk_path = Dir.glob("../**/*-debug-androidTest.apk").first
-
-    screengrab(
+    capture_android_screenshots(
       locales: ["en-US"],
-      app_apk_path: File.absolute_path(apk_path),
-      tests_apk_path:  File.absolute_path(test_apk_path)
+      clear_previous_screenshots: true,
+      app_apk_path: "../build/app/outputs/apk/debug/app-debug.apk",
     )
   end
-
 end

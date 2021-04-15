@@ -64,3 +64,5 @@ android/key.properties
 android/app/pc-api-7545032973716901506-515-97970b2d55d2.json
 android/fastlane/report.xml
 secrets.tar
+android/app/key.jks
+android/fastlane/report.xml
