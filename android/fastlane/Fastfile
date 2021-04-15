@@ -25,4 +25,18 @@ platform :android do
       release_status: 'draft', 
     )
   end
+  lane :screenshots do
+    gradle(
+      task: 'assemble assembleAndroidTest'
+    )
+    apk_path = Dir.glob("../**/*-debug.apk").first
+    test_apk_path = Dir.glob("../**/*-debug-androidTest.apk").first
+
+    screengrab(
+      locales: ["en-US"],
+      app_apk_path: File.absolute_path(apk_path),
+      tests_apk_path:  File.absolute_path(test_apk_path)
+    )
+  end
+
 end
