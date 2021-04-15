@@ -51,13 +51,13 @@ android {
     }
     signingConfigs {
        release {           
+            def keyFile = "../../" + System.getenv('storeFile')
+            println "$keyFile"
            if(System.getenv("CI") == true){
-                def keyFile = "../../" + System.getenv['storeFile']
-                println "$keyFile"
-                keyAlias System.getenv['keyAlias']
-                keyPassword System.getenv['keyPassword']
-                storeFile System.getenv['storeFile'] ? file(keyFile) : null
-                storePassword System.getenv['storePassword']
+                keyAlias System.getenv('keyAlias')
+                keyPassword System.getenv('keyPassword')
+                storeFile System.getenv('storeFile') ? file(keyFile) : null
+                storePassword System.getenv('storePassword')
            }else{
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
