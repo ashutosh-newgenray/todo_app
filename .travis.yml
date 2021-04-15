@@ -33,6 +33,6 @@ jobs:
         - gem install bundler
         - cd android && bundle install && cd ..
       script:
-        - flutter build
+        - flutter build appbundle --build-number $TRAVIS_BUILD_NUMBER
         - cd android
         - bundle exec fastlane deploy
