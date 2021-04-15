@@ -51,7 +51,7 @@ android {
     }
     signingConfigs {
        release {
-           storeFile file("../../key.jks")
+           storeFile file("../../uploadkey.jks")
            if(System.getenv("CI") == true){
                 keyAlias System.getenv['keyAlias']
                 keyPassword System.getenv['keyPassword']
