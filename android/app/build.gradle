@@ -54,12 +54,12 @@ android {
            if(System.getenv("CI") == true){
                 keyAlias System.getenv['keyAlias']
                 keyPassword System.getenv['keyPassword']
-                storeFile System.getenv['storeFile'] ? file(System.getenv['storeFile']) : null
+                storeFile System.getenv['storeFile'] ? file(System.getenv['storeFile']) : file("../../key.jks")
                 storePassword System.getenv['storePassword']
            }else{
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
-                storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : file("../../key.jks")
                 storePassword keystoreProperties['storePassword']
            }
        }
